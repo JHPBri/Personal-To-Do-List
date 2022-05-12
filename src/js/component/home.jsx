@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header.jsx";
-import Input2 from "./ToDoList.jsx";
+import ToDoList from "./ToDoList.jsx";
+import data from "./data.json";
 //create your first component
+
 const Home = () => {
+	const [toDoList, SetToDoList] = useState(data);
+
 	return (
 		<div>
 			<Header />
-			<Input2 />
+			<ToDoList toDoList={toDoList} />
+			{toDoList.map((todo) => {
+				return <ToDo todo={todo} />;
+			})}
 		</div>
 	);
 };
